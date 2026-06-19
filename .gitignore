@@ -1,0 +1,16 @@
+# Ignore local environment secrets
+.env
+**/.env
+
+# Ignore heavy video downloads
+ai-shorts-backend/downloads/
+
+# Ignore Python environment folders
+__pycache__/
+*.pyc
+ai-shorts-backend/venv/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
