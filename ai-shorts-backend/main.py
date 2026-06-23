@@ -40,11 +40,13 @@ async def download_video(request: VideoRequest):
         raise HTTPException(status_code=400, detail="No YouTube URL provided")
         
     try:
-        # Standard configuration rules for video grabbing format
+                # Download rules for yt-dlp 
         ydl_opts = {
             'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]',
             'outtmpl': f'{DOWNLOAD_DIR}/%(id)s.%(ext)s',
+            'cookiefile': 'cookies.txt', # 👈 ADD THIS LINE HERE
         }
+
         
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=True)
